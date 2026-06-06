@@ -38,15 +38,38 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 
 ## Funcionalidades implementadas
 
-- Geração ou leitura do dataset de vendas
-- Inspeção inicial dos dados
-- Limpeza de dados nulos e datas inválidas
-- Criação de colunas derivadas
-- Cálculo de métricas agregadas
-- Segmentação de clientes
-- Estatísticas com NumPy
-- Geração de gráficos
-- Exportação de arquivos CSV, JSON e PNG
+## Funcionalidades implementadas
+
+- Geração de dataset sintético de vendas
+- Leitura do arquivo `vendas.csv`
+- Inspeção inicial dos dados com `shape`, colunas, tipos e valores nulos
+- Criação de cópia de segurança do DataFrame original
+- Limpeza de dados nulos, datas inválidas e espaços extras
+- Imputação de quantidades nulas e preços unitários nulos
+- Criação de colunas derivadas:
+  - `receita_total`
+  - `mes`
+  - `mes_nome`
+  - `trimestre`
+  - `ano`
+  - `faixa_receita_item`
+  - `preco_medio_item`
+  - `comparacao_preco_media`
+  - `percentual_diferenca_media`
+- Cálculo de métricas agregadas com `groupby`
+- Segmentação de clientes por total gasto
+- Cálculo de estatísticas com NumPy
+- Normalização de receitas com operações vetorizadas
+- Criação de gráficos com Matplotlib e Seaborn
+- Exportação de relatórios em CSV e JSON
+- Uso de expressões regulares para limpeza de strings
+- Uso de funções lambda
+- Uso de função que recebe outra função como parâmetro
+- Criação da classe `AnalisadorDeVendas`
+- Criação da classe `AnalisadorComProjecao` com herança
+- Projeção simples de tendência com média móvel
+
+## Como executar
 
 ## Como executar
 
@@ -54,3 +77,42 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 
 ```bash
 git clone https://github.com/renatosadriano-debug/Analise-de-Vendas---salesinsight-py.git
+```
+
+2. Acesse a pasta do projeto:
+
+```bash
+cd Analise-de-Vendas---salesinsight-py
+```
+
+3. Crie um ambiente virtual:
+
+```bash
+python -m venv .venv
+```
+
+4. Ative o ambiente virtual no Windows PowerShell:
+
+```bash
+.venv\Scripts\Activate.ps1
+```
+
+5. Instale as dependências do projeto:
+
+```bash
+pip install -r requirements.txt
+```
+
+6. Abra o projeto no VS Code:
+
+```bash
+code .
+```
+
+7. Execute o notebook principal:
+
+```text
+salesinsight.ipynb
+```
+
+Após abrir o notebook, execute as células em sequência, do início ao fim.
