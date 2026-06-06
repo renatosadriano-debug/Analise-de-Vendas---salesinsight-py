@@ -38,8 +38,6 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 
 ## Funcionalidades implementadas
 
-## Funcionalidades implementadas
-
 - Geração de dataset sintético de vendas
 - Leitura do arquivo `vendas.csv`
 - Inspeção inicial dos dados com `shape`, colunas, tipos e valores nulos
@@ -68,8 +66,6 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 - Criação da classe `AnalisadorDeVendas`
 - Criação da classe `AnalisadorComProjecao` com herança
 - Projeção simples de tendência com média móvel
-
-## Como executar
 
 ## Como executar
 
@@ -116,3 +112,12 @@ salesinsight.ipynb
 ```
 
 Após abrir o notebook, execute as células em sequência, do início ao fim.
+
+
+## Kanban do projeto
+
+O acompanhamento das tarefas do projeto foi organizado no Notion.
+
+Link do Kanban:
+
+[Kanban — SalesInsight PY](https://app.notion.com/p/Mini-Projeto-Analise-de-Vendas-Ai-37235d940f7d804bbf60fb4f662b87c4?source=copy_link)
