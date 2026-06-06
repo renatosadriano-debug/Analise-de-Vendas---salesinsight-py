@@ -8,6 +8,7 @@ O SalesInsight PY é um mini-projeto de análise de dados que lê, limpa, transf
 
 O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com NumPy e criar visualizações para apoiar a análise comercial.
 
+
 ## Tecnologias utilizadas
 
 - **Python**: linguagem principal utilizada para desenvolver o pipeline de análise de dados.
@@ -116,3 +117,12 @@ salesinsight.ipynb
 ```
 
 Após abrir o notebook, execute as células em sequência, do início ao fim.
+
+
+## Kanban do projeto
+
+O acompanhamento das tarefas do projeto foi organizado no Notion.
+
+Link do Kanban:
+
+[Kanban — SalesInsight PY](https://app.notion.com/p/Mini-Projeto-Analise-de-Vendas-Ai-37235d940f7d804bbf60fb4f662b87c4?source=copy_link)
