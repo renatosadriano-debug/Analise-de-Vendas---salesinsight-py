@@ -22,7 +22,7 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 
 - **Jinja2**: biblioteca utilizada pelo Pandas para renderização e formatação visual de tabelas estilizadas com `.style`.
 
-- **IPython**: pacote utilizado para recursos interativos no notebook, como `display()` e exibição de tabelas em HTML.
+- **IPython**: pacote utilizado para recursos interativos no notebook, como `display()` e exibição de tabelas em HTML..
 
 - **ipykernel**: pacote necessário para executar notebooks `.ipynb` no VS Code e em ambientes Jupyter.
 
