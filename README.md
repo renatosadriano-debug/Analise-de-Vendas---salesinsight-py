@@ -30,13 +30,44 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 
 - **Git e GitHub**: ferramentas utilizadas para versionamento do código, organização por branches e publicação do repositório.
 
-## Arquivos do projeto
+## Arquivos e estrutura do projeto
 
-- `salesinsight.ipynb`: notebook principal do projeto
-- `vendas.csv`: dataset de vendas
-- `requirements.txt`: bibliotecas necessárias
-- `outputs/`: relatórios e gráficos gerados
-- `planejamento/tarefas-kanban.md`: organização das tarefas do projeto
+```text
+salesinsight-py/
+│
+├── salesinsight.ipynb
+├── vendas.csv
+├── requirements.txt
+├── README.md
+│
+├── outputs/
+│   ├── relatorio_resumo.csv
+│   ├── relatorio_metricas.json
+│   ├── relatorio_top3_clientes_por_mes.csv
+│   ├── relatorio_top3_clientes_ano_2024.csv
+│   ├── relatorio_desconto_top10_clientes_2024.csv
+│   │
+│   └── graficos/
+│       ├── grafico_top3_clientes_por_mes.png
+│       ├── grafico_top3_clientes_ano_2024.png
+│       └── demais gráficos gerados pelo pipeline
+│
+└── planejamento/
+    └── tarefas-kanban.md
+    
+- `salesinsight.ipynb`: notebook principal do projeto, contendo o pipeline completo de análise de vendas.
+
+- `vendas.csv`: dataset utilizado no projeto. Caso o arquivo não exista, o pipeline pode gerar um dataset sintético automaticamente.
+
+- `requirements.txt`: arquivo com as bibliotecas necessárias para instalação do ambiente.
+
+- `README.md`: documentação principal do projeto.
+
+- `outputs/`: pasta destinada aos relatórios gerados pelo pipeline.
+
+- `outputs/graficos/`: pasta destinada aos gráficos exportados em formato PNG.
+
+- `planejamento/tarefas-kanban.md`: arquivo de apoio para controle das tarefas e requisitos do projeto.
 
 ## Funcionalidades implementadas
 
@@ -69,51 +100,187 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 - Criação da classe `AnalisadorComProjecao` com herança
 - Projeção simples de tendência com média móvel
 
-## Como executar
+## Classes e herança no projeto
 
-1. Clone o repositório:
+O projeto utiliza programação orientada a objetos para organizar o pipeline de análise de dados.
+
+A classe principal `AnalisadorDeVendas` concentra as etapas centrais do processo, como carregamento do arquivo CSV, limpeza dos dados, criação de colunas derivadas, cálculo de métricas, geração de gráficos e exportação de relatórios.
+
+```python
+class AnalisadorDeVendas:
+```
+
+Essa classe funciona como a estrutura base do pipeline, mantendo os principais atributos do projeto, como `df_bruto`, `df_limpo`, `metricas` e `clientes`.
+
+Também foi criada a classe `AnalisadorComProjecao`, que herda de `AnalisadorDeVendas`:
+
+```python
+class AnalisadorComProjecao(AnalisadorDeVendas):
+```
+
+Essa classe filha reaproveita todos os métodos da classe principal e adiciona funcionalidades específicas de projeção simples de tendência, como o método `projetar_tendencia()`.
+
+No construtor da classe filha, foi utilizado `super()` para chamar o construtor da classe pai:
+
+```python
+def __init__(self, caminho_arquivo, meses_projecao=3):
+    super().__init__(caminho_arquivo)
+    self.meses_projecao = meses_projecao
+    self.projecoes = []
+```
+
+O uso de `super().__init__(caminho_arquivo)` permite inicializar corretamente os atributos herdados da classe `AnalisadorDeVendas`, como o caminho do arquivo, os DataFrames e as métricas. Em seguida, a classe filha adiciona seus próprios atributos, como `meses_projecao` e `projecoes`.
+
+Com isso, o projeto aplica herança de forma prática, evitando repetição de código e permitindo estender o comportamento do pipeline original.
+
+## Como executar no VS Code
+
+Esta é a receita de execução do projeto **SalesInsight PY** no VS Code.
+
+### Pré-requisitos
+
+Antes de iniciar, confirme que você possui instalado:
+
+- Python
+- VS Code
+- Extensão Jupyter no VS Code
+- Git
+
+### Receita de execução
+
+1. Abra o terminal na pasta onde deseja salvar o projeto.
+
+2. Clone o repositório do GitHub:
 
 ```bash
 git clone https://github.com/renatosadriano-debug/Analise-de-Vendas---salesinsight-py.git
 ```
 
-2. Acesse a pasta do projeto:
+3. Entre na pasta do projeto:
 
 ```bash
 cd Analise-de-Vendas---salesinsight-py
 ```
 
-3. Crie um ambiente virtual:
+4. Crie um ambiente virtual para o projeto:
 
 ```bash
 python -m venv .venv
 ```
 
-4. Ative o ambiente virtual no Windows PowerShell:
+5. Ative o ambiente virtual no Windows PowerShell:
 
 ```bash
 .venv\Scripts\Activate.ps1
 ```
 
-5. Instale as dependências do projeto:
+6. Instale as bibliotecas necessárias:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-6. Abra o projeto no VS Code:
+7. Abra o projeto no VS Code:
 
 ```bash
 code .
 ```
 
-7. Execute o notebook principal:
+8. No VS Code, abra o notebook principal:
 
 ```text
 salesinsight.ipynb
 ```
 
-Após abrir o notebook, execute as células em sequência, do início ao fim.
+9. Selecione o kernel Python do ambiente virtual.
+
+No canto superior direito do notebook, escolha o kernel relacionado ao ambiente `.venv`, normalmente exibido como:
+
+```text
+Python (.venv)
+```
+
+10. Execute as células do notebook em sequência, do início ao fim.
+
+Durante a execução, o pipeline irá carregar o arquivo `vendas.csv`. Caso esse arquivo não exista, o próprio notebook poderá gerar um dataset sintético automaticamente.
+
+11. Ao final da execução, confira os arquivos gerados.
+
+Os relatórios serão salvos em:
+
+```text
+outputs/
+```
+
+Os gráficos serão salvos em:
+
+```text
+outputs/graficos/
+```
+
+### Resultado esperado
+
+Ao executar o notebook completo, o projeto realiza:
+
+- leitura do dataset de vendas;
+- limpeza e padronização dos dados;
+- criação de colunas derivadas;
+- cálculo de métricas agregadas;
+- segmentação de clientes;
+- cálculo de estatísticas com NumPy;
+- geração de gráficos com Matplotlib e Seaborn;
+- projeção simples de tendência;
+- ranking dos principais clientes;
+- relatório de descontos para clientes com maior faturamento;
+- exportação de relatórios e gráficos.
+
+Após a execução, o projeto estará pronto para análise dos resultados dentro do próprio notebook e também pelos arquivos exportados nas pastas `outputs/` e `outputs/graficos/`.
+
+## Versionamento com GitHub
+
+O projeto foi versionado com Git e publicado no GitHub. O repositório permite acompanhar a evolução do código, registrar alterações importantes e organizar o desenvolvimento por meio de branches.
+
+O fluxo utilizado no projeto segue a lógica de desenvolvimento por etapas:
+
+```text
+main
+develop
+branches de funcionalidades
+```
+
+A branch `main` representa a versão principal do projeto. A branch `develop` é utilizada como base de desenvolvimento, onde as melhorias são integradas antes de serem consideradas estáveis. Para novas funcionalidades, são criadas branches específicas, permitindo trabalhar em alterações sem comprometer diretamente a versão principal.
+
+Exemplo de criação de branch para uma nova funcionalidade:
+
+```bash
+git checkout -b feat/ranking-clientes
+```
+
+Após implementar uma alteração, os arquivos são adicionados ao controle de versão:
+
+```bash
+git add .
+```
+
+Em seguida, é criado um commit com uma mensagem objetiva:
+
+```bash
+git commit -m "feat: adiciona ranking de clientes por faturamento"
+```
+
+Depois, a branch é enviada para o GitHub:
+
+```bash
+git push -u origin feat/ranking-clientes
+```
+
+No GitHub, as alterações podem ser revisadas e integradas por meio de Pull Request. Esse processo ajuda a manter o histórico organizado e facilita a rastreabilidade das melhorias implementadas no projeto.
+
+Repositório do projeto:
+
+```text
+https://github.com/renatosadriano-debug/Analise-de-Vendas---salesinsight-py
+```
 
 
 ## Kanban do projeto
