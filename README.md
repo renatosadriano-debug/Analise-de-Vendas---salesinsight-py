@@ -10,21 +10,23 @@ O objetivo é gerar métricas, segmentar clientes, calcular estatísticas com Nu
 
 ## Tecnologias utilizadas
 
-- **Python**: linguagem principal utilizada para desenvolver o pipeline de análise de dados.
+- **Python**: linguagem principal utilizada no desenvolvimento do pipeline de análise de dados.
 
-- **Pandas**: biblioteca usada para trabalhar com tabelas, DataFrames, leitura de CSV, limpeza de dados, criação de colunas e agrupamentos.
+- **Pandas**: biblioteca utilizada para manipulação de dados em formato tabular, leitura e exportação de arquivos CSV, limpeza de dados, criação de colunas derivadas e cálculos agregados com DataFrames.
 
-- **NumPy**: biblioteca usada para cálculos numéricos, estatísticas, arrays, operações vetorizadas e normalização de dados.
+- **NumPy**: biblioteca utilizada para cálculos numéricos, estatísticas descritivas, operações com arrays e apoio à projeção simples de tendência.
 
-- **Matplotlib**: biblioteca usada para criar gráficos e exportar visualizações em formato PNG.
+- **Matplotlib**: biblioteca utilizada para criação, personalização e exportação de gráficos em formato PNG.
 
-- **Seaborn**: biblioteca usada em conjunto com o Matplotlib para gerar gráficos estatísticos com melhor apresentação visual.
+- **Seaborn**: biblioteca utilizada em conjunto com o Matplotlib para gerar visualizações estatísticas com melhor apresentação visual.
 
-- **ipykernel**: pacote necessário para executar notebooks `.ipynb` no VS Code.
+- **Jinja2**: biblioteca utilizada pelo Pandas para renderização e formatação visual de tabelas estilizadas com `.style`.
 
-- **jinja2**: biblioteca usada pelo Pandas para aplicar formatação visual em tabelas com `.style`.
+- **IPython**: pacote utilizado para recursos interativos no notebook, como `display()` e exibição de tabelas em HTML.
 
-- **Jupyter Notebook / VS Code**: ambiente utilizado para desenvolver, executar e testar o projeto.
+- **ipykernel**: pacote necessário para executar notebooks `.ipynb` no VS Code e em ambientes Jupyter.
+
+- **Jupyter Notebook / VS Code**: ambientes utilizados para desenvolver, executar, testar e documentar o projeto.
 
 - **Git e GitHub**: ferramentas utilizadas para versionamento do código, organização por branches e publicação do repositório.
 

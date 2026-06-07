@@ -1,6 +1,8 @@
-ipykernel
 pandas
 numpy
 matplotlib
 seaborn
-jinja2
+Jinja2
+ipython
+ipykernel
+notebook
