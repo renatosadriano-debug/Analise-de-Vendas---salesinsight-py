@@ -95,7 +95,7 @@ salesinsight-py/
 - Exportação de relatórios em CSV e JSON
 - Uso de expressões regulares para limpeza de strings
 - Uso de funções lambda
-- Uso de função que recebe outra função como parâmetro
+- Uso de função que recebe outra função como parâmetro - O requisito de função de ordem superior foi atendido pela função processar_coluna(), que recebe uma função de transformação como parâmetro. No relatório de desconto dos Top 10 clientes, foi criada uma lambda chamada regra_desconto e essa lambda foi passada para processar_coluna(), que aplicou a regra sobre a coluna faturamento_ano para criar a coluna desconto.
 - Criação da classe `AnalisadorDeVendas`
 - Criação da classe `AnalisadorComProjecao` com herança
 - Projeção simples de tendência com média móvel
@@ -290,3 +290,7 @@ O acompanhamento das tarefas do projeto foi organizado no Notion.
 Link do Kanban:
 
 [Kanban — SalesInsight PY](https://app.notion.com/p/Mini-Projeto-Analise-de-Vendas-Ai-37235d940f7d804bbf60fb4f662b87c4?source=copy_link)
+
+## Video apresentação
+
+Link do Youtube: https://www.youtube.com/watch?v=3OXcd41MUjs
