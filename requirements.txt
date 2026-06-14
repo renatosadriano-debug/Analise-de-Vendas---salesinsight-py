@@ -6,4 +6,4 @@ Jinja2
 ipython
 ipykernel
 notebook
-pandas
+
